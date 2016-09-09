@@ -16,6 +16,7 @@
 //= require_tree .
 
 // Should move this into a separate js file?
+// Code copied from the Heroku guide https://devcenter.heroku.com/articles/direct-to-s3-image-uploads-in-rails
 $(function() {
   $('.directUpload').find("input:file").each(function(i, elem) {
     var fileInput    = $(elem);
