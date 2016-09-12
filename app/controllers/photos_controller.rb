@@ -1,7 +1,8 @@
 class PhotosController < ApplicationController
+  around_action :catch_not_found, only: :show
 
   def show
-    photo = Photo.where(id: params[:id]).first!
+    photo = Photo.find(params[:id])
     @url = photo.url
   end
   
@@ -22,5 +23,4 @@ class PhotosController < ApplicationController
       @s3_direct_post = S3_BUCKET.presigned_post(key:"uploads/#{SecureRandom.uuid}/${filename}",
                                                  success_action_status: '201', acl: 'public-read')
     end
-  
 end
